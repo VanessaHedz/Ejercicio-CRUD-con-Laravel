@@ -1,18 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PeliculaController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/', [PeliculaController::class, 'index'])
+    ->name('peliculas.index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/create', [PeliculaController::class, 'add'])
+    ->name('peliculas.create');
+
+Route::post('/delete', [PeliculaController::class, 'delete'])
+    ->name('peliculas.delete');
+
+Route::post('/watch', [PeliculaController::class, 'watch'])
+    ->name('peliculas.watch');
+
+Route::post('/edit',[PeliculaController::class, 'edit'])
+    ->name('peliculas.edit');
